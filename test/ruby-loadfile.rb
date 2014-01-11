@@ -5,14 +5,6 @@ end
 require 'yaml'
 require 'date'
 $aListOfRoomates = []
-#loadRoomates
-
-
-# data = 
-# File.oopen('roomates.yaml', 'w') { 
-# 	|f| YAML.dump(data, f)
-# }
-
 
 def findRoomate(aRoomate)
 	roomateIndex = $aListOfRoomates.find_index {
@@ -25,6 +17,15 @@ def findRoomate(aRoomate)
 		return roomateIndex
 	end
 
+end
+
+def findMacAddress(aMacAddress)
+	$aListOfRoomates.each do |element|
+		if element.computers.include?(aMacAddress)
+			return element.name
+			break
+		end
+	end
 end
 
 def addMacAddress(aRoomate, aMacAddress)
@@ -112,8 +113,10 @@ loadRoomates
 #removeRoomate('penny')
 #addMacAddress('sheldon', '99:99:99:99:99:99')
 #addPayment('sheldon', Date.today)
-puts ""
-puts getPayments('sheldon')
+
+#puts getPayments('sheldon')
+
+puts findMacAddress('de:ad:be:ef:co:fe')
 
 
 # puts aListOfRoomates[2].name
