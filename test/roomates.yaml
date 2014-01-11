@@ -4,9 +4,9 @@
   computers:
   - de:ad:be:ef:co:fe
   - 99:99:99:99:99:99
-  - 99:99:99:99:99:99
-  - 99:99:99:99:99:99
-  paid: 2014-01-01
+  paid:
+  - 2013-12-11
+  - 2014-01-11
 - !ruby/object:Roomate
   name: howard
   computers:

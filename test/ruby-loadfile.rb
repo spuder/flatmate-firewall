@@ -3,6 +3,7 @@ class Roomate
 end
 
 require 'yaml'
+require 'date'
 $aListOfRoomates = []
 #loadRoomates
 
@@ -56,11 +57,23 @@ def removeRoomate(aRoomate)
 	end
 	#puts $aListOfRoomates[2].inspect
 	saveRoomates
-	return nil
+	#return nil
 end
 
-def changePayment(aRoomate)
-	return nil
+def addPayment(aRoomate, aDate)
+	roomateIndex = findRoomate(aRoomate)
+	if $aListOfRoomates[roomateIndex].paid.include? aDate
+		puts "Roomate " + aRoomate.to_s + " appears to have alreday paid for " + aDate.to_s
+	else
+		$aListOfRoomates[roomateIndex].paid.push(aDate)
+	end
+	saveRoomates
+	#return nil
+end
+
+def getPayments(aRoomate)
+	roomateIndex = findRoomate(aRoomate)
+	return $aListOfRoomates[roomateIndex].paid
 end
 
 def validatePayment(aRoomate)
@@ -86,20 +99,21 @@ loadRoomates
 
 #puts $aListOfRoomates[0].name
 
-
 # puts $aListOfRoomates.find_index {
 # 	|item| item.name == ('penny')
 # }
 
 
-addUser("joe")
+#addUser("joe")
 #removeRoomate('penny')
-puts "\npenny is at index "  + findRoomate('penny').to_s
+#puts "\npenny is at index "  + findRoomate('penny').to_s
 #findRoomate('herpaderp')
 #removeRoomate('herpaderp')
 #removeRoomate('penny')
 #addMacAddress('sheldon', '99:99:99:99:99:99')
-
+#addPayment('sheldon', Date.today)
+puts ""
+puts getPayments('sheldon')
 
 
 # puts aListOfRoomates[2].name
