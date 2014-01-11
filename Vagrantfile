@@ -52,8 +52,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 #Turn off the nat devices http://bit.ly/1cNUfwg
 #https://github.com/mitchellh/vagrant/issues/2298
-   config.vm.provider :virtualbox do |vb|
-     vb.customize "post-boot",["controlvm", :id, "setlinkstate1", "off"]
-   end
+   # config.vm.provider :virtualbox do |vb|
+   #   vb.customize "post-boot",["controlvm", :id, "setlinkstate1", "off"]
+   # end
 
 end

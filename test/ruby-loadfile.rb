@@ -6,6 +6,15 @@ require 'yaml'
 require 'date'
 $aListOfRoomates = []
 
+
+def listRoomates()
+	roomates = []
+	$aListOfRoomates.each do |element|
+		roomates.push(element.name)
+	end
+	return roomates
+end
+
 def findRoomate(aRoomate)
 	roomateIndex = $aListOfRoomates.find_index {
 	|item| item.name == (aRoomate)
@@ -38,7 +47,7 @@ def addMacAddress(aRoomate, aMacAddress)
 	return nil
 end
 
-def addUser(aName)
+def addRoomate(aName)
 	aNewRoomate = Roomate.new
 	aNewRoomate.name = aName
 	aNewRoomate.computers = ["00:00:00:11:11:11", '22:22:22:33:33:33']
@@ -81,8 +90,10 @@ def validatePayment(aRoomate)
 	return hasPaid
 end
 
-def blockUsers(aListOfRoomates)
-	return nil
+def blockRoomates(aListOfRoomates)
+
+	wasGood = %x( "`pwd`/foo.sh" )
+	return $?
 end
 
 def loadRoomates()
@@ -98,6 +109,7 @@ end
 
 loadRoomates
 
+puts blockRoomates(['foo','bar'])
 #puts $aListOfRoomates[0].name
 
 # puts $aListOfRoomates.find_index {
@@ -105,7 +117,7 @@ loadRoomates
 # }
 
 
-#addUser("joe")
+#addRoomate("joe")
 #removeRoomate('penny')
 #puts "\npenny is at index "  + findRoomate('penny').to_s
 #findRoomate('herpaderp')
@@ -116,14 +128,9 @@ loadRoomates
 
 #puts getPayments('sheldon')
 
-puts findMacAddress('de:ad:be:ef:co:fe')
+#puts findMacAddress('de:ad:be:ef:co:fe')
+puts listRoomates
 
-
-# puts aListOfRoomates[2].name
-
-# aListOfRoomates.each do | num|
-# 	puts num.name
-# end
 
 
 
