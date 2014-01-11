@@ -28,7 +28,19 @@ def addUser(aName)
 	return nil
 end
 
-def removeUser(aRoomate)
+def removeRoomate(aRoomate)
+	puts "\nAbout to remove " +  aRoomate
+	roomateIndex = $aListOfRoomates.find_index {
+	|item| item.name == (aRoomate)
+	}
+	puts "roomateIndex  is " + roomateIndex.to_s
+	if roomateIndex != nil
+		$aListOfRoomates.delete_at(roomateIndex)
+	else
+		puts "Unable to delete, no such user "  + roomateIndex.to_s
+	end
+	#puts $aListOfRoomates[2].inspect
+	saveRoomates
 	return nil
 end
 
@@ -58,9 +70,19 @@ end
 loadRoomates
 
 
-puts $aListOfRoomates[0].name
+#puts $aListOfRoomates[0].name
+
+
+# puts $aListOfRoomates.find_index {
+# 	|item| item.name == ('penny')
+# }
+
 
 addUser("joe")
+removeRoomate('penny')
+
+
+
 # puts aListOfRoomates[2].name
 
 # aListOfRoomates.each do | num|
