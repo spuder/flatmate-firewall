@@ -30,7 +30,7 @@ def addMacAddress(aRoomate, aMacAddress)
 	roomateIndex = findRoomate(aRoomate)
 	if roomateIndex != nil
 		$aListOfRoomates[roomateIndex].computers.push (aMacAddress.to_s)
-		$aListOfRoomates[roomateIndex].computers = aListOfRoomates[roomateIndex].computers.uniq
+		$aListOfRoomates[roomateIndex].computers = $aListOfRoomates[roomateIndex].computers.uniq
 		saveRoomates
 	end
 	return nil
