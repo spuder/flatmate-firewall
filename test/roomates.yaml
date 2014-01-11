@@ -2,15 +2,30 @@
 - !ruby/object:Roomate
   name: sheldon
   computers:
-    mac: de:ad:be:ef:co:fe
+  - de:ad:be:ef:co:fe
+  - 99:99:99:99:99:99
+  - 99:99:99:99:99:99
+  - 99:99:99:99:99:99
   paid: 2014-01-01
 - !ruby/object:Roomate
   name: howard
   computers:
-    mac: '11:11:11:11:11:11'
+  - '11:11:11:11:11:11'
   paid: 2014-01-01
 - !ruby/object:Roomate
   name: penny
   computers:
-    mac: '22:22:22:22:22:22'
+  - '22:22:22:22:22:22'
   paid: 2013-01-01
+- !ruby/object:Roomate
+  name: joe
+  computers:
+  - '00:00:00:11:11:11'
+  - '22:22:22:33:33:33'
+  paid: 2014-01-02
+- !ruby/object:Roomate
+  name: joe
+  computers:
+  - '00:00:00:11:11:11'
+  - '22:22:22:33:33:33'
+  paid: 2014-01-02

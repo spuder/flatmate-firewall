@@ -13,15 +13,33 @@ $aListOfRoomates = []
 # }
 
 
+def findRoomate(aRoomate)
+	roomateIndex = $aListOfRoomates.find_index {
+	|item| item.name == (aRoomate)
+	}
+	if roomateIndex == nil
+		puts " Unable to find user '" + aRoomate + "'"
+		return nil
+	else
+		return roomateIndex
+	end
+
+end
 
 def addMacAddress(aRoomate, aMacAddress)
+	roomateIndex = findRoomate(aRoomate)
+	if roomateIndex != nil
+		$aListOfRoomates[roomateIndex].computers.push (aMacAddress.to_s)
+		$aListOfRoomates[roomateIndex].computers = aListOfRoomates[roomateIndex].computers.uniq
+		saveRoomates
+	end
 	return nil
 end
 
 def addUser(aName)
 	aNewRoomate = Roomate.new
 	aNewRoomate.name = aName
-	aNewRoomate.computers = ""
+	aNewRoomate.computers = ["00:00:00:11:11:11", '22:22:22:33:33:33']
 	aNewRoomate.paid = Date.parse('2014-01-02')
 	$aListOfRoomates.push(aNewRoomate)
 	saveRoomates
@@ -29,11 +47,8 @@ def addUser(aName)
 end
 
 def removeRoomate(aRoomate)
-	puts "\nAbout to remove " +  aRoomate
-	roomateIndex = $aListOfRoomates.find_index {
-	|item| item.name == (aRoomate)
-	}
-	puts "roomateIndex  is " + roomateIndex.to_s
+	#puts "\nAbout to remove " +  aRoomate
+	roomateIndex = findRoomate(aRoomate)
 	if roomateIndex != nil
 		$aListOfRoomates.delete_at(roomateIndex)
 	else
@@ -69,7 +84,6 @@ end
 
 loadRoomates
 
-
 #puts $aListOfRoomates[0].name
 
 
@@ -79,7 +93,12 @@ loadRoomates
 
 
 addUser("joe")
-removeRoomate('penny')
+#removeRoomate('penny')
+puts "\npenny is at index "  + findRoomate('penny').to_s
+#findRoomate('herpaderp')
+#removeRoomate('herpaderp')
+#removeRoomate('penny')
+#addMacAddress('sheldon', '99:99:99:99:99:99')
 
 
 
