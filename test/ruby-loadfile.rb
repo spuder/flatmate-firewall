@@ -20,6 +20,12 @@ end
 
 aNewRoomate = Roomate.new
 
-aNewRoomate.name = bob
+aNewRoomate.name = "bob"
+aNewRoomate.computers = "33:33:33:33:33"
+aNewRoomate.paid = 2014-01-02
 
-#File.open('roomates.yaml')
+
+aListOfRoomates.push(aNewRoomate)
+File.open('roomates.yaml', 'w') {
+	|f| f.write(YAML::dump(aListOfRoomates))
+}
