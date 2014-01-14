@@ -18,6 +18,11 @@ describe "StaticPages" do
   	  expect(page).to have_content('Home')
   	end
 
+  	it "has home title" do
+  	  visit '/static_pages/home'
+  	  expect(page).to have_title('FlatmateFirewall | Home')
+  	end
+
   end
 
   describe "Admin Page" do
@@ -26,7 +31,7 @@ describe "StaticPages" do
 	  visit '/static_pages/admin'
   	  expect(page).to have_content('Admin')
   	end
-  	
+
   end
 
 
