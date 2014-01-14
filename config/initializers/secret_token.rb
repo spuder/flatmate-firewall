@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-FlatmateFirewall::Application.config.secret_key_base = 'eba984bb004371f3727c38ffda9cff3eaa4b82630ad57850568e2ee4bcff756bbadcdd2a7dcabecd8da5c07dd842b887e03da4ac21cc60850c9d611c6e77718a'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+FlatmateFirewall::Application.config.secret_key_base = secure_token
