@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
        router.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box"
        #config.vm.network :forwarded_port, host_ip: "192.168.45.11"
        #router.vm.network :forwarded_port, host_ip: "192.168.45.11"
-
+       router.vm.network "forwarded_port", guest: 3000, host: 8080
 
      end
 
