@@ -1,9 +1,9 @@
 FlatmateFirewall::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/admin"
-  get "static_pages/help"
-  resources :computers
+  root 'static_pages#home'
+  match '/admin', to: 'static_pages#admin', via: 'get'
+  match '/help', to: 'static_pages#help', via: 'get'
 
+  resources :computers
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
